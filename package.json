@@ -1,16 +1,61 @@
 {
   "name": "ssvikas-admin-app",
   "version": "1.0.0",
-  "main": "main.js",
+  "description": "SSVikas Kela Agency - Admin Desktop Application for Banana Crop Trading Management",
+  "main": "electron.js",
   "scripts": {
-  "start": "electron .",
-  "package-win": "electron-packager . SSViKASAdmin --platform=win32 --arch=x64 --out=dist --overwrite"
-},
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build-win": "electron-builder --win",
+    "pack": "electron-builder --dir",
+    "generate-sample": "node scripts/generate-sample-data.js",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.ssvikas.admin",
+    "productName": "SSVikas Admin",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!node_modules",
+      "!scripts",
+      "!*.md"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "displayLanguageSelector": false
+    }
+  },
+  "keywords": [
+    "banana",
+    "trading",
+    "agriculture",
+    "mandi",
+    "accounting"
+  ],
+  "author": "SSVikas Kela Agency",
+  "license": "ISC",
   "devDependencies": {
-    "electron": "^31.0.0",
-    "electron-packager": "^17.1.2"
+    "electron": "^37.3.1",
+    "electron-builder": "^24.6.4"
   },
   "dependencies": {
-    "mongoose": "^8.0.0"
+    "chart.js": "^4.4.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "xlsx": "^0.18.5"
   }
 }

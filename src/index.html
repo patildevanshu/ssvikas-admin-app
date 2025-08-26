@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSVikas Kela Agency - Middleman Management</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/tables.css">
+    
+    <!-- Icons (Using Lucide via CDN) -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i data-lucide="banana"></i>
+                    <h2>SSVikas</h2>
+                    <p class="tagline">Kela Agency</p>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="#" class="nav-link active" data-page="dashboard">
+                            <i data-lucide="layout-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" data-page="transactions">
+                            <i data-lucide="receipt"></i>
+                            <span>Transactions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" data-page="farmers">
+                            <i data-lucide="sprout"></i>
+                            <span>Farmers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" data-page="purchasers">
+                            <i data-lucide="truck"></i>
+                            <span>Purchasers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" data-page="search">
+                            <i data-lucide="search"></i>
+                            <span>Search</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" data-page="reports">
+                            <i data-lucide="file-text"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="firm-info">
+                    <div class="firm-avatar">
+                        <i data-lucide="building-2"></i>
+                    </div>
+                    <div class="firm-details">
+                        <p class="firm-name">SSVikas Agency</p>
+                        <p class="firm-role">Middleman Firm</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-sidebar-toggle" id="mobileSidebarToggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title" id="pageTitle">Dashboard</h1>
+                </div>
+                
+                <div class="header-right">
+                    <div class="header-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Today's Trades</span>
+                            <span class="stat-value" id="todayTrades">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Pending Amount</span>
+                            <span class="stat-value" id="pendingAmount">₹0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="newTransactionBtn">
+                            <i data-lucide="plus"></i>
+                            <span>New Transaction</span>
+                        </button>
+                        <button class="btn btn-secondary" id="refreshBtn">
+                            <i data-lucide="refresh-cw"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content" id="pageContent">
+                <!-- Dashboard View -->
+                <div class="page-view active" id="dashboard-view">
+                    <div class="dashboard-grid">
+                        <!-- Summary Cards -->
+                        <div class="card summary-card">
+                            <div class="card-header">
+                                <h3>Total Transactions</h3>
+                                <i data-lucide="receipt" class="card-icon"></i>
+                            </div>
+                            <div class="card-body">
+                                <div class="stat-number" id="totalTransactions">0</div>
+                                <div class="stat-change positive">
+                                    <i data-lucide="arrow-up"></i>
+                                    <span id="transactionsChange">This month</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card summary-card">
+                            <div class="card-header">
+                                <h3>Total Commission</h3>
+                                <i data-lucide="indian-rupee" class="card-icon"></i>
+                            </div>
+                            <div class="card-body">
+                                <div class="stat-number" id="totalCommission">₹0</div>
+                                <div class="stat-change positive">
+                                    <i data-lucide="arrow-up"></i>
+                                    <span id="commissionChange">This month</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card summary-card">
+                            <div class="card-header">
+                                <h3>Active Farmers</h3>
+                                <i data-lucide="users" class="card-icon"></i>
+                            </div>
+                            <div class="card-body">
+                                <div class="stat-number" id="activeFarmers">0</div>
+                                <div class="stat-change neutral">
+                                    <i data-lucide="minus"></i>
+                                    <span id="farmersChange">Active accounts</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card summary-card">
+                            <div class="card-header">
+                                <h3>Total Weight</h3>
+                                <i data-lucide="weight" class="card-icon"></i>
+                            </div>
+                            <div class="card-body">
+                                <div class="stat-number" id="totalWeight">0 KG</div>
+                                <div class="stat-change positive">
+                                    <i data-lucide="arrow-up"></i>
+                                    <span id="weightChange">This month</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Recent Transactions -->
+                        <div class="card recent-transactions">
+                            <div class="card-header">
+                                <h3>Recent Transactions</h3>
+                                <button class="btn btn-sm btn-secondary" id="viewAllTransactions">View All</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-container">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Farmer</th>
+                                                <th>Purchaser</th>
+                                                <th>Weight (KG)</th>
+                                                <th>Net Amount</th>
+                                                <th>Commission</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="recentTransactionsTable">
+                                            <tr class="no-data">
+                                                <td colspan="6">No recent transactions</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pending Balances -->
+                        <div class="card pending-balances">
+                            <div class="card-header">
+                                <h3>Account Balances</h3>
+                                <div class="balance-tabs">
+                                    <button class="tab-btn active" data-tab="farmers">Farmers</button>
+                                    <button class="tab-btn" data-tab="purchasers">Purchasers</button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- Farmer Balances -->
+                                <div class="balance-content active" id="farmers-balances">
+                                    <div class="balance-list" id="farmerBalanceList">
+                                        <div class="no-data">No farmer balances</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Purchaser Balances -->
+                                <div class="balance-content" id="purchasers-balances">
+                                    <div class="balance-list" id="purchaserBalanceList">
+                                        <div class="no-data">No purchaser balances</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Views (will be loaded dynamically) -->
+                <div class="page-view" id="transactions-view">
+                    <div class="loading">Loading Transactions...</div>
+                </div>
+                
+                <div class="page-view" id="farmers-view">
+                    <div class="loading">Loading Farmers...</div>
+                </div>
+                
+                <div class="page-view" id="purchasers-view">
+                    <div class="loading">Loading Purchasers...</div>
+                </div>
+                
+                <div class="page-view" id="search-view">
+                    <div class="loading">Loading Search...</div>
+                </div>
+                
+                <div class="page-view" id="reports-view">
+                    <div class="loading">Loading Reports...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Transaction Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal large-modal" id="addTransactionModal">
+            <div class="modal-header">
+                <h3>Add New Transaction</h3>
+                <button class="modal-close" id="closeTransactionModal">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="transaction-form" id="transactionForm">
+                    <div class="form-grid">
+                        <!-- Basic Details -->
+                        <div class="form-section">
+                            <h4>Basic Details</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="transactionDate">Date *</label>
+                                    <input type="date" id="transactionDate" name="date" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="boardNo">Board No</label>
+                                    <input type="text" id="boardNo" name="boardNo" placeholder="Enter board number">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="gaadiNo">Gaadi No (Vehicle) *</label>
+                                    <input type="text" id="gaadiNo" name="gaadiNo" placeholder="e.g., MP-11-ZD-6272" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Farmer & Crop Details -->
+                        <div class="form-section">
+                            <h4>Farmer & Crop Details</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="farmerName">Farmer Name *</label>
+                                    <input type="text" id="farmerName" name="farmerName" placeholder="Enter farmer name" required list="farmersList">
+                                    <datalist id="farmersList"></datalist>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="weight">Weight (KG) *</label>
+                                    <input type="number" id="weight" name="weight" placeholder="0" step="0.01" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="lungar">Lungar (Plants) *</label>
+                                    <input type="number" id="lungar" name="lungar" placeholder="0" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pricing Details -->
+                        <div class="form-section">
+                            <h4>Pricing Details</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="bhaav">Bhaav (₹/100kg) *</label>
+                                    <input type="number" id="bhaav" name="bhaav" placeholder="0" step="0.01" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="mandiTax">Mandi Tax (%) *</label>
+                                    <input type="number" id="mandiTax" name="mandiTax" placeholder="0" step="0.01" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="commission">Commission (₹) *</label>
+                                    <input type="number" id="commission" name="commission" placeholder="0" step="0.01" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="majduri">Majduri (₹) *</label>
+                                    <input type="number" id="majduri" name="majduri" placeholder="0" step="0.01" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="purchaserName">Purchaser Name *</label>
+                                    <input type="text" id="purchaserName" name="purchaserName" placeholder="Enter purchaser name" required list="purchasersList">
+                                    <datalist id="purchasersList"></datalist>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calculated Amounts (Auto-filled) -->
+                        <div class="form-section calculated-section">
+                            <h4>Calculated Amounts</h4>
+                            <div class="calculation-display">
+                                <div class="calc-item">
+                                    <label>Total Amount (Paid by Purchaser):</label>
+                                    <span class="amount-value" id="calculatedTotalAmount">₹0</span>
+                                </div>
+                                <div class="calc-item">
+                                    <label>Net Amount (Paid to Farmer):</label>
+                                    <span class="amount-value" id="calculatedNetAmount">₹0</span>
+                                </div>
+                                <div class="calc-item highlight">
+                                    <label>Firm Commission:</label>
+                                    <span class="amount-value" id="calculatedFirmCommission">₹0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelTransactionBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i data-lucide="save"></i>
+                            Save Transaction
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/calculations.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
