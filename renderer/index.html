@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SSVikas Admin App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>📝 Add Transaction</h2>
+  <form id="transactionForm">
+    <input type="text" placeholder="Sr No" name="srNo" required>
+    <input type="date" name="date" required>
+    <input type="text" placeholder="Board No" name="boardNo" required>
+    <input type="text" placeholder="Gaadi No" name="gaadiNo" required>
+    <input type="text" placeholder="Farmer Name" name="farmerName" required>
+    <input type="text" placeholder="Purchaser Name" name="purchaserName" required>
+    <input type="number" placeholder="Bhaav" name="bhaav" required>
+    <input type="text" placeholder="Lungar" name="lungar">
+    <input type="number" placeholder="Weight" name="weight" required>
+    <input type="number" placeholder="Mandi Tax" name="mandiTax">
+    <input type="number" placeholder="Commission" name="commission">
+    <input type="number" placeholder="Majdoori" name="majdoori">
+    <input type="number" placeholder="Total Amount" name="totalAmount">
+    <input type="number" placeholder="Net Amount" name="netAmount">
+    <button type="submit">Save</button>
+  </form>
+
+  <h2>📋 Transactions</h2>
+  <table border="1" id="transactionsTable">
+    <thead>
+      <tr>
+        <th>Sr No</th><th>Date</th><th>Farmer</th><th>Purchaser</th><th>Total</th><th>Net</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="index.js"></script>
+</body>
+</html>
