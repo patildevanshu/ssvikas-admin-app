@@ -42,7 +42,7 @@ function createWindow() {
     minWidth: 1200,
     minHeight: 700,
     show: false,
-    icon: path.join(__dirname, 'build/icon.ico'),
+    icon: path.join(__dirname, 'build/logo.ico'),
     titleBarStyle: 'default',
     webPreferences: {
       nodeIntegration: false,
