@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>SSVikas Admin</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>SSVikas Admin</h1>
+    <div id="status">DB: <span id="dbStatus">…</span></div>
+  </header>
+
+  <section class="panel">
+    <h2>Add Farmer</h2>
+    <form id="farmerForm">
+      <input name="name" placeholder="Farmer name" required />
+      <input name="mobile" placeholder="Mobile" />
+      <button type="submit">Save</button>
+    </form>
+    <div><button id="loadFarmers">Load Farmers</button></div>
+    <ul id="farmerList"></ul>
+  </section>
+
+  <section class="panel">
+    <h2>Reports</h2>
+    <button id="dailyReport">Daily Summary (Today)</button>
+    <pre id="reportOut"></pre>
+  </section>
+
+  <script src="./index.js"></script>
+</body>
+</html>

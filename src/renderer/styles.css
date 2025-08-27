@@ -1,0 +1,15 @@
+:root { --bg:#0b1020; --card:#141a2d; --accent:#5b8cff; --text:#f4f7ff; --muted:#aab3c5; --ok:#35c28e; --warn:#ffb454; }
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family: Inter, system-ui, Segoe UI, Arial; }
+.topbar { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; background:#0f1530; border-bottom:1px solid #20263d; position:sticky; top:0; }
+.topbar h1 { font-size:18px; margin:0; letter-spacing:0.5px; }
+#status { font-size:12px; color:var(--muted); }
+.panel { background:var(--card); margin:16px 20px; padding:16px; border-radius:12px; border:1px solid #1f2741; }
+h2 { margin:0 0 10px; font-size:16px; }
+input,select,button { background:#0f1530; color:var(--text); border:1px solid #28314f; padding:10px 12px; border-radius:10px; outline:none; }
+input::placeholder { color:#7080a8; }
+button { cursor:pointer; background:var(--accent); border-color:var(--accent); }
+button:hover { filter:brightness(1.05); }
+ul { list-style:none; padding-left:0; margin:8px 0 0; }
+li { padding:6px 0; border-bottom:1px solid #222a45; }
+pre { background:#0f1530; padding:12px; border-radius:8px; overflow:auto; border:1px solid #28314f; }
